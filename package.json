@@ -7,6 +7,6 @@
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
-    "dev": "node app.js"
+    "app.js": "node app.js"
   }
 }
