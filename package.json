@@ -8,5 +8,8 @@
   "main": "app.js",
   "scripts": {
     "app.js": "node app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }

@@ -1,5 +1,8 @@
 const { greet, rocessTask, processTask } = require("./task");
 
+console.log(process.env.APP_NAME);
+console.log(process.env.STUDENT_NAME);
+
 console.log(greet("project complete"));
 
 processTask("DSA Complete").then((result) => {
@@ -14,3 +17,5 @@ async function work() {
 };
 
 work();
+
+
