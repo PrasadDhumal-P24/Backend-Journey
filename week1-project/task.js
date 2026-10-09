@@ -10,7 +10,7 @@ function processTask(task) {
 
             resolve("Task : " + task)
 
-        }, 1000);
+        }, 1500);
 
     });
 }
