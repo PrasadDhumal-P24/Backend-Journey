@@ -1,16 +1,16 @@
-//1st example
+
 
 const express = require("express");
 
 const app = express();
 
-app.get("/jobs", (req, res) => {
-    res.status(200).send("Request fetch successfully");
+app.get("/jobs/:id", (req, res) => {
+    res.status(200).send("Request fetch successfully" + req.params.id);
 });
 
 
 
-app.get("/student-not-found", (req,res)=>{
+app.get("/student-not-found", (req, res) => {
     res.status(404).send("Student not found");
 });
 
