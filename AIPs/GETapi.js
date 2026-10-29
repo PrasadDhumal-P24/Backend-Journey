@@ -30,9 +30,6 @@ app.get("/students", (req, res) => {
 
 
 
-
-
-
 app.get("/students/:id", (req, res) => {
     const id = Number(req.params.id);
 
@@ -86,40 +83,6 @@ app.post("/students", (req, res) => {
 });
 
 
-
-
-let secondID = 2;
-
-app.post("/students", (req, res) => {
-
-    const { name, course } = req.body;
-
-    if (typeof name !== "string" || !name.trim() ||
-        typeof course !== "string" || !course.trim()) {
-        return res.status(400).json({
-            message: "Required valid name and course"
-        });
-    }
-
-    const newadd = {
-
-        id: secondID++,
-        name: name,
-        course: course
-
-    };
-
-    students.push(secondID);
-
-
-    return res.status(200).json({
-        message: "new student added successfully"
-    });
-});
-
-
-
-
 app.put("/students/:id", (req, res) => {
     const id = Number(req.params.id);
     const { name, course } = req.body;
@@ -157,53 +120,6 @@ app.put("/students/:id", (req, res) => {
         student: students[index]
     });
 });
-
-
-// app.patch("/students/:id", (req, res) => {
-//     const id = Number(req.params.id);
-//     const student = students.find(
-//         (item) => item.id === id
-//     );
-
-//     if (!student) {
-//         return res.status(404).json({
-//             message: "student not found"
-//         });
-//     }
-//     const { name, course } = req.body;
-
-//     if (Object.keys(req.body).length === 0) {
-//         return res.status(400).json({
-//             message: "provided a field to update"
-//         });
-//     }
-
-//     if (name !== undefined) {
-//         if (typeof name !== "string" || !name.trim()) {
-//             return res.status(400).json({
-//                 message: "Invalid name"
-//             });
-//         }
-//         student.name = name.trim();
-//     }
-
-//     if (course !== undefined) {
-//         if (typeof course !== "string" || !course.trim()) {
-//             return res.status(400).json({
-//                 message: "Invalid course name"
-//             });
-//         }
-//         student.course = name.course();
-//     }
-
-//     return res.status(200).json({
-//         message: "student updated successfully",
-//         student
-//     });
-
-// });
-
-
 
 
 app.patch("/students/:id", (req, res) => {
@@ -278,6 +194,10 @@ app.delete("/students/:id", (req, res) => {
         student: deletedStudent
     });
 })
+
+app.get("/test-error", (req, res, next) => {
+    next(new Error("Testing error middleware"));
+});
 
 app.use((req, res) => {
     return res.status(404).json({
